@@ -28,7 +28,7 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-   // const ints = numbers.map((num: string): number => parseInt(num));
+    // const ints = numbers.map((num: string): number => parseInt(num));
     return [];
 }
 
@@ -80,7 +80,14 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const color_truth = colors.every(
+        (color: string): boolean =>
+            color === "red" ||
+            color === "blue" ||
+            color === "green" ||
+            color === ""
+    );
+    return color_truth;
 }
 
 /**
