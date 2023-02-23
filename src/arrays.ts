@@ -121,9 +121,19 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    const firstNegativeIndex = values.findIndex(
-        (value: number): boolean => value < 0
+    const firstNegNum = values.findIndex((value: number): boolean => value < 0);
+    const values_sum = values.reduce(
+        (currentTotal: number, num: number) => currentTotal + num,
+        0
     );
-    const values2 = [...values];
-    return [];
+    const values_before_neg = values.slice(0, firstNegNum);
+    const values_before_neg_sum = values_before_neg.reduce(
+        (currentTotal: number, num: number) => currentTotal + num,
+        0
+    );
+    const neg_pos_values = [...values];
+    neg_pos_values.splice(firstNegNum + 1, 0, values_before_neg_sum);
+    const push_values_sum = [...values];
+    push_values_sum.push(values_sum);
+    return firstNegNum !== -1 ? neg_pos_values : push_values_sum;
 }
