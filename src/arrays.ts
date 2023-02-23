@@ -10,9 +10,9 @@ export function bookEndList(numbers: number[]): number[] {
         (num: number): boolean =>
             num === numbers[0] || num === numbers[length - 1]
     )
-    const new_numbers = [numbers[0], numbers[numbers.length - 1]];
-    return new_numbers;
     */
+    const new_numbers = [numbers[0], numbers[numbers.length - 1]];
+    return numbers.length === 0 ? [] : new_numbers;
     return [];
 }
 
@@ -30,7 +30,7 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    // const ints = numbers.map((num: string): number => parseInt(num));
+    //const ints = numbers.map((num: string): number => parseInt(num));
     return [];
 }
 
@@ -106,7 +106,14 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const addends_sum = addends.reduce(
+        (currentTotal: number, num: number) => currentTotal + num,
+        0
+    );
+    const new_addends = addends.join("+");
+    return new_addends === ""
+        ? "0=0"
+        : addends_sum.toString() + "=" + new_addends;
 }
 
 /**
