@@ -5,13 +5,15 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    /**
+    /** 
     const new_numbers = numbers.filter(
         (num: number): boolean =>
             num === numbers[0] || num === numbers[length - 1]
-    );
+    )
+    const new_numbers = [numbers[0], numbers[numbers.length - 1]];
+    return new_numbers;
     */
-    return numbers;
+    return [];
 }
 
 /**
@@ -40,7 +42,13 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const new_amounts = amounts.map((amount: string): string =>
+        amount[0] === "$" ? amount.substring(1) : amount
+    );
+    const new_new_amounts = new_amounts.map((new_amount: string): number =>
+        isNaN(parseInt(new_amount)) ? 0 : parseInt(new_amount)
+    );
+    return new_new_amounts;
 };
 
 /**
