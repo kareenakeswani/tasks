@@ -7,7 +7,6 @@
 export function bookEndList(numbers: number[]): number[] {
     const new_numbers = [numbers[0], numbers[numbers.length - 1]];
     return numbers.length === 0 ? [] : new_numbers;
-    return [];
 }
 
 /**
@@ -122,11 +121,9 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    /**
     const firstNegativeIndex = values.findIndex(
         (value: number): boolean => value < 0
     );
     const values2 = [...values];
-    */
     return [];
 }
