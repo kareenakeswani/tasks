@@ -161,7 +161,20 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    const new_questions = [
+        ...questions,
+        {
+            id,
+            name,
+            type,
+            body: "",
+            expected: "",
+            options: [],
+            points: 1,
+            published: false
+        }
+    ];
+    return new_questions;
 }
 
 /***
