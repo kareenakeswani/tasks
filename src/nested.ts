@@ -256,7 +256,22 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const target_id = questions.filter(
+        (question: Question): boolean => question.id === targetId
+    );
+    const new_questions = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const ind = new_questions.findIndex(
+        (question: Question): boolean => question.id === target_id[0].id
+    );
+    targetOptionIndex === -1
+        ? (new_questions[ind].options = [
+              ...new_questions[ind].options,
+              newOption
+        ])
+        : (new_questions[ind].options[targetOptionIndex] = newOption);
+    return new_questions;
 }
 
 /***
@@ -270,5 +285,21 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const target_id = questions.filter(
+        (question: Question): boolean => question.id === targetId
+    );
+    const new_questions = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const ind = new_questions.findIndex(
+        (question: Question): boolean => question.id === target_id[0].id
+    );
+    const copy_question = {
+        ...new_questions[ind],
+        name: "Copy of " + new_questions[ind].name,
+        published: false,
+        id: newId
+    };
+    new_questions.splice(ind + 1, 0, copy_question);
+    return new_questions;
 }
