@@ -199,7 +199,17 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const target_id = questions.filter(
+        (question: Question): boolean => question.id === targetId
+    );
+    const new_questions = questions.map(
+        (question: Question): Question => ({ ...question })
+    );
+    const ind = new_questions.findIndex(
+        (question: Question): boolean => question.id === target_id[0].id
+    );
+    new_questions[ind].name = newName;
+    return new_questions;
 }
 
 /***
