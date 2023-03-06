@@ -1,4 +1,3 @@
-/* eslint-disable no-extra-parens */
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
@@ -107,9 +106,11 @@ export function renameQuestion(question: Question, newName: string): Question {
  */
 export function publishQuestion(question: Question): Question {
     const new_question = { ...question };
-    new_question.published === true
-        ? (new_question.published = false)
-        : (new_question.published = true);
+    if (new_question.published === true) {
+        new_question.published = false;
+    } else {
+        new_question.published = true;
+    }
     return new_question;
 }
 
