@@ -264,7 +264,6 @@ export function editOption(
     const target_id = questions.filter(
         (question: Question): boolean => question.id === targetId
     );
-    console.log(questions);
     const new_questions = questions.map(
         (question: Question): Question => ({
             ...question,
@@ -279,7 +278,6 @@ export function editOption(
     } else {
         new_questions[ind].options.splice(targetOptionIndex, 1, newOption);
     }
-    console.log(new_questions);
     return new_questions;
 }
 /*
