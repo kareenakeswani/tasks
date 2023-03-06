@@ -264,8 +264,12 @@ export function editOption(
     const target_id = questions.filter(
         (question: Question): boolean => question.id === targetId
     );
+    console.log(questions);
     const new_questions = questions.map(
-        (question: Question): Question => ({ ...question })
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
     );
     const ind = new_questions.findIndex(
         (question: Question): boolean => question.id === target_id[0].id
@@ -273,18 +277,29 @@ export function editOption(
     if (targetOptionIndex === -1) {
         new_questions[ind].options = [...new_questions[ind].options, newOption];
     } else {
-        new_questions[ind].options[targetOptionIndex] = newOption;
+        new_questions[ind].options.splice(targetOptionIndex, 1, newOption);
     }
-    /*
-    targetOptionIndex === -1
-        ? (new_questions[ind].options = [
-              ...new_questions[ind].options,
-              newOption
-          ])
-        : (new_questions[ind].options[targetOptionIndex] = newOption);
-        */
+    console.log(new_questions);
     return new_questions;
 }
+/*
+    if (targetOptionIndex === -1) {
+        return questions.map(
+            (question: Question): Question =>
+                question.id === targetId
+                    ? { ...question, options: [...question.options, newOption] }
+                    : { ...question }
+        );
+    } else {
+        return questions.map(
+            (question: Question): Question =>
+                question.id === targetId
+                    ? { ...question, options: [...question.options].splice(targetOptionIndex, 1, newOption) }
+                    : { ...question }
+        );
+    }
+    return new_questions;
+    */
 
 /***
  * Consumes an array of questions, and produces a new array based on the original array.
