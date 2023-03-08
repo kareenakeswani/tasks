@@ -7,7 +7,7 @@ const DEFAULT_COLOR_INDEX = 0;
 function ChangeColor(): JSX.Element {
     const [colorIndex, setColorIndex] = useState<number>(DEFAULT_COLOR_INDEX);
     function settingColorIndex() {
-        setColorIndex(1 + colorIndex);
+        setColorIndex(1 + DEFAULT_COLOR_INDEX);
         if (colorIndex === 2) {
             setColorIndex(0);
         }
