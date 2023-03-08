@@ -17,7 +17,7 @@ export function ColoredBox(): JSX.Element {
             <h3>Colored Box</h3>
             <span>The current color is: {COLORS[colorIndex]}</span>
             <div>
-                <Button onClick={() => settingColorIndex()}>Next Color</Button>;
+                <Button onClick={() => settingColorIndex()}>Next Color</Button>
             </div>
             <div
                 data-testid="colored-box"
