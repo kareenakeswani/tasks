@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 export const COLORS = ["red", "blue", "green"];
 const DEFAULT_COLOR_INDEX = 0;
 
-export function ColoredBox(): JSX.Element {
+function ChangeColor(): JSX.Element {
     const [colorIndex, setColorIndex] = useState<number>(DEFAULT_COLOR_INDEX);
     function settingColorIndex() {
         setColorIndex(1 + colorIndex);
@@ -12,28 +12,30 @@ export function ColoredBox(): JSX.Element {
             setColorIndex(0);
         }
     }
-    function ChangeColor(): JSX.Element {
-        return <Button onClick={() => settingColorIndex()}>Next Color</Button>;
-    }
-    function ColorPreview() {
-        return (
-            <div
-                data-testid="colored-box"
-                style={{
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: COLORS[colorIndex],
-                    display: "inline-block",
-                    verticalAlign: "bottom",
-                    marginLeft: "5px"
-                }}
-            ></div>
-        );
-    }
+    return <Button onClick={() => settingColorIndex()}>Next Color</Button>;
+}
+
+function ColorPreview() {
+    return (
+        <div
+            data-testid="colored-box"
+            style={{
+                width: "50px",
+                height: "50px",
+                backgroundColor: COLORS[DEFAULT_COLOR_INDEX],
+                display: "inline-block",
+                verticalAlign: "bottom",
+                marginLeft: "5px"
+            }}
+        ></div>
+    );
+}
+
+export function ColoredBox(): JSX.Element {
     return (
         <div>
             <h3>Colored Box</h3>
-            <span>The current color is: {COLORS[colorIndex]}</span>
+            <span>The current color is: {COLORS[DEFAULT_COLOR_INDEX]}</span>
             <div>
                 <ChangeColor></ChangeColor>
                 <ColorPreview></ColorPreview>
