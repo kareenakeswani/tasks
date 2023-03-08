@@ -6,23 +6,15 @@ const DEFAULT_COLOR_INDEX = 0;
 
 export function ColoredBox(): JSX.Element {
     const [colorIndex, setColorIndex] = useState<number>(DEFAULT_COLOR_INDEX);
-    function ChangeColor(): JSX.Element {
-        return (
-            <Button onClick={() => setColorIndex(1 + colorIndex)}>
-                Next Color
-            </Button>
-        );
+    function settingColorIndex() {
+        setColorIndex(1 + colorIndex);
+        if (colorIndex === 2) {
+            setColorIndex(0);
+        }
     }
-    return (
-        <div>
-            <h3>Colored Box</h3>
-            <span>The current color is: {COLORS[colorIndex]}</span>
-            <div>
-                <ChangeColor></ChangeColor>
-                <ColorPreview></ColorPreview>
-            </div>
-        </div>
-    );
+    function ChangeColor(): JSX.Element {
+        return <Button onClick={() => settingColorIndex()}>Next Color</Button>;
+    }
     function ColorPreview() {
         return (
             <div
@@ -38,4 +30,14 @@ export function ColoredBox(): JSX.Element {
             ></div>
         );
     }
+    return (
+        <div>
+            <h3>Colored Box</h3>
+            <span>The current color is: {COLORS[colorIndex]}</span>
+            <div>
+                <ChangeColor></ChangeColor>
+                <ColorPreview></ColorPreview>
+            </div>
+        </div>
+    );
 }
