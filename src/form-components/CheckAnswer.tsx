@@ -5,9 +5,10 @@ export function CheckAnswer({
 }: {
     expectedAnswer: string;
 }): JSX.Element {
+    const [answer, setAnswer] = useState<string>("");
     return (
         <div>
-            <h3>Check Answer</h3>
+            <div>{answer === expectedAnswer ? "✔️" : "❌"}</div>
         </div>
     );
 }
