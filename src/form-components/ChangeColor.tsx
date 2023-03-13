@@ -39,9 +39,18 @@ export function ChangeColor(): JSX.Element {
                         name="options"
                         onChange={updateColor}
                         id="color-option"
-                        label={color}
+                        label={
+                            <div
+                                style={{
+                                    backgroundColor: color,
+                                    width: "50px",
+                                    height: "50px"
+                                }}
+                            >
+                                {color}
+                            </div>
+                        }
                         value={color}
-                        checked={color === chosenColor}
                     />
                 ))}
             </div>
